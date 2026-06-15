@@ -1,0 +1,32 @@
+# Compiled
+target/
+*.class
+*.jar
+!gpt.bat
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+*.swp
+*~
+
+# Maven
+dependency-reduced-pom.xml
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+
+# Environment / Secrets
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Gemini / AI tool metadata
+.gemini/
+target/

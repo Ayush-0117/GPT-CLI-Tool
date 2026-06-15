@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# ─────────────────────────────────────────────────────
+# GPT CLI Tool — Launcher Script (Linux / macOS)
+# ─────────────────────────────────────────────────────
+# This script resolves its own location (even through
+# symlinks) so the user can symlink it into their PATH
+# and run "gpt" from anywhere.
+# ─────────────────────────────────────────────────────
+
+set -euo pipefail
+
+# ── Resolve the real directory of this script ──
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+  DIR="$( cd -P "$( dirname "$SOURCE" )" > /dev/null 2>&1 && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" > /dev/null 2>&1 && pwd )"
+
+JAR="$DIR/target/gpt-cli-tool-1.0-SNAPSHOT.jar"
+
+# ── Pre-flight checks ──
+if ! command -v java &> /dev/null; then
+  echo "Error: Java is not installed or not in PATH."
+  echo "Please install Java 21+ (https://adoptium.net)"
+  exit 1
+fi
+
+if [ ! -f "$JAR" ]; then
+  echo "JAR not found at $JAR"
+  echo "Building project..."
+  if command -v mvn &> /dev/null; then
+    (cd "$DIR" && mvn clean package -DskipTests -q)
+  else
+    echo "Error: Maven is not installed. Please build manually:"
+    echo "  cd $DIR && mvn clean package -DskipTests"
+    exit 1
+  fi
+fi
+
+# ── Launch ──
+exec java -jar "$JAR" "$@"
