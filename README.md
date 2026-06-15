@@ -1,4 +1,4 @@
-# GPT CLI Tool 🤖
+# GPT CLI Tool
 
 A powerful, multi-provider AI chat assistant that runs directly in your terminal. Supports **OpenAI**, **Google Gemini**, **Grok**, and **DeepSeek** — switchable on the fly.
 
@@ -10,17 +10,17 @@ A powerful, multi-provider AI chat assistant that runs directly in your terminal
 
 ## ✨ Features
 
-| Feature | Description |
-|---|---|
-| 🔄 **Multi-Provider** | Switch between OpenAI, Gemini, Grok, and DeepSeek mid-session |
-| 🌊 **Streaming Responses** | Real-time token-by-token output with animated spinner |
-| 📁 **File Context** | Add local files/directories as context for the AI |
-| 🖼️ **Image Support** | Attach images to your prompts (Gemini & OpenAI) |
-| 🔍 **Deep Research** | Scrape Google Search results and feed them to the AI |
-| 💻 **Shell Execution** | AI suggests commands → you approve → it runs them natively |
-| 💾 **Session History** | Conversations saved to MongoDB for later review |
-| 🎨 **Rich Terminal UI** | ANSI colors, markdown rendering, styled boxes |
-| 🧠 **OS-Aware** | Automatically detects OS, user, and time for context |
+| Feature                 | Description                                                   |
+| ----------------------- | ------------------------------------------------------------- |
+| **Multi-Provider**      | Switch between OpenAI, Gemini, Grok, and DeepSeek mid-session |
+| **Streaming Responses** | Real-time token-by-token output with animated spinner         |
+| **File Context**        | Add local files/directories as context for the AI             |
+| **Image Support**       | Attach images to your prompts (Gemini & OpenAI)               |
+| **Deep Research**       | Scrape Google Search results and feed them to the AI          |
+| **Shell Execution**     | AI suggests commands → you approve → it runs them natively    |
+| **Session History**     | Conversations saved to MongoDB for later review               |
+| **Rich Terminal UI**    | ANSI colors, markdown rendering, styled boxes                 |
+| **OS-Aware**            | Automatically detects OS, user, and time for context          |
 
 ---
 
@@ -30,11 +30,12 @@ A powerful, multi-provider AI chat assistant that runs directly in your terminal
 
 - **Java 21+** — [Download](https://adoptium.net)
 - **Maven 3.9+** — [Download](https://maven.apache.org/install.html)
-- **MongoDB** *(optional)* — for session history persistence
+- **MongoDB** _(optional)_ — for session history persistence
 
 ### Installation
 
 **Linux / macOS:**
+
 ```bash
 git clone https://github.com/YOUR_USERNAME/ChatGPT_CLI_Tool.git
 cd ChatGPT_CLI_Tool
@@ -42,6 +43,7 @@ cd ChatGPT_CLI_Tool
 ```
 
 **Windows (PowerShell):**
+
 ```powershell
 git clone https://github.com/YOUR_USERNAME/ChatGPT_CLI_Tool.git
 cd ChatGPT_CLI_Tool
@@ -71,11 +73,13 @@ gpt.bat      # Windows
 ## ⚙️ Configuration
 
 1. Copy the example environment file:
+
    ```bash
    cp .env.example .env
    ```
 
 2. Edit `.env` with your API keys:
+
    ```env
    # At least one API key is required
    GEMINI_API_KEY=your_gemini_key_here
@@ -105,17 +109,17 @@ gpt.bat      # Windows
 
 ### Commands
 
-| Command | Action |
-|---|---|
-| `:help` | Show available commands |
-| `:exit` | Save session and exit |
-| `:clear` | Clear conversation context |
+| Command            | Action                                              |
+| ------------------ | --------------------------------------------------- |
+| `:help`            | Show available commands                             |
+| `:exit`            | Save session and exit                               |
+| `:clear`           | Clear conversation context                          |
 | `:provider <name>` | Switch AI provider (openai, gemini, grok, deepseek) |
-| `:history` | List past sessions (requires MongoDB) |
-| `:add <path>` | Add a file or directory to the AI's context |
-| `:image <path>` | Attach an image to your next message |
-| `:deep <query>` | Perform deep web research on a topic |
-| `!<command>` | Execute a shell command directly |
+| `:history`         | List past sessions (requires MongoDB)               |
+| `:add <path>`      | Add a file or directory to the AI's context         |
+| `:image <path>`    | Attach an image to your next message                |
+| `:deep <query>`    | Perform deep web research on a topic                |
+| `!<command>`       | Execute a shell command directly                    |
 
 ### Examples
 
@@ -171,6 +175,7 @@ mvn test
 ```
 
 Runs 16 unit tests covering:
+
 - `CommandRunnerTest` — shell execution
 - `ConfigTest` — environment variable loading
 - `MessageTest` — model construction
